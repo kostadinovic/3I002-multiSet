@@ -62,7 +62,7 @@ public class HashMultiSet<T> implements MultiSet<T>{
 	public int count(T o) {
 		// TODO Auto-generated method stub
 		Integer val = hash.get(o);
-		if(!(val == null)) {
+		if(!(val == null) {
 			return val;
 		}
 		return 0;
@@ -74,6 +74,7 @@ public class HashMultiSet<T> implements MultiSet<T>{
 		hash.clear();
 		
 	}
+	///fefoerkeao
 
 	@Override
 	public int size() {
