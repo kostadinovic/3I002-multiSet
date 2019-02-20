@@ -74,7 +74,7 @@ public class HashMultiSet<T> implements MultiSet<T>{
 		hash.clear();
 		
 	}
-	///fefoerkea
+	///fefoerke
 
 	@Override
 	public int size() {
