@@ -45,16 +45,29 @@ public class HashMultiSet<T> implements MultiSet<T>{
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean remove(Object e) {
 		// TODO Auto-generated method stub
-	
+		T elem = (T) e;
+		if (hash.containsKey(e)) {
+			hash.put((T) e, count(elem)-1);
+			size--;
+			return true;
+		}
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean remove(Object e, int count) {
 		// TODO Auto-generated method stub
+		T elem = (T)e;
+		if ((hash.containsKey(e)) && (count != 0) && (count(elem) >= count)) {
+			hash.put((T)e, count(elem)-count);
+			size -= count;
+			return true;
+		}
 		return false;
 	}
 
@@ -62,7 +75,7 @@ public class HashMultiSet<T> implements MultiSet<T>{
 	public int count(T o) {
 		// TODO Auto-generated method stub
 		Integer val = hash.get(o);
-		if(!(val == null) {
+		if(!(val == null)) {
 			return val;
 		}
 		return 0;
@@ -74,7 +87,6 @@ public class HashMultiSet<T> implements MultiSet<T>{
 		hash.clear();
 		
 	}
-	///fefoerke
 
 	@Override
 	public int size() {
