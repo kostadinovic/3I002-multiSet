@@ -159,7 +159,7 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 	 * methode toArray de AbstractCOllection pour que notre classe
 	 * soit instanceof Collection
 	 */
-	public List<T> toArray2() {
+	public List<T> elements() {
 		List<T> elems = new ArrayList(this);
 		Set<T> s = new HashSet<>(elems);
 		elems = new ArrayList(s);
