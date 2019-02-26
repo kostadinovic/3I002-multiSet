@@ -30,6 +30,7 @@ public class IteratorTest {
 		assertEquals("b", l.get(3));
 		assertEquals("c", l.get(4));
 		assertEquals("c", l.get(5));
+		
 	}
 
 }
