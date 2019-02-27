@@ -7,20 +7,23 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import pobj.tme4.MultiSet;
+import pobj.util.Chrono;
 
 public class WordCount {
 	
-	public static int wordcount(MultiSet<String> ms) {
-		String file= "data/WarAndPeace.txt";
-		BufferedReader br = new BufferedReader(new FileReader(file));
+	public static void wordcount(MultiSet<String> ms) {
+		String file= "data/text.txt";
+		BufferedReader br;
 		try {
 			String line;
+			br = new BufferedReader(new FileReader(file));
 			while((line=br.readLine()) != null) {
 				for(String word: line.split("\\P{L}+")) {
 					if(word.equals("")) continue; //ignore les mots vides
 					ms.add(word);			
 				}
 			}
+			br.close();
 			
 			/*
 			 * class MultiSetComparator afin de rendre notre MultiSet comparable
@@ -50,12 +53,23 @@ public class WordCount {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		br.close();
 	}
 	
 	public static void main(String[] args) {
 		HashMultiSet<String> hms = new HashMultiSet<String>();
+		NaiveMultiSet<String> nms = new NaiveMultiSet<String>();
+		System.out.println("Avec HashMultiSet :");
+		Chrono chrono = new Chrono();
 		wordcount(hms);
+		chrono.stop();
+		System.out.println("----------------------------");
+		System.out.println("Avec NaiveMultiSet :");
+		Chrono chrono2 = new Chrono();
+		wordcount(nms);
+		chrono2.stop();
+		
+		
+		
 		
 	}
 	
